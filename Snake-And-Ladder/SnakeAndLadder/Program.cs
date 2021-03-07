@@ -18,7 +18,10 @@ namespace SnakeAndLadder
 
         public static int Ladder(int currentPosition, int number)
         {
+            int temporaryNumber = currentPosition;
             currentPosition += number;
+            if (currentPosition > 100)
+                currentPosition = temporaryNumber;
             return currentPosition;
         }
 
@@ -41,31 +44,33 @@ namespace SnakeAndLadder
             int currentPosition = 0;
             Console.WriteLine("The  Starting Position of Player is: " + START_POSITION );
             Random Dice = new Random();
-            int number = Dice.Next(1,7);
-            int checkmoves = Dice.Next(1, 4);
-            Console.WriteLine(number);
-            Console.WriteLine(checkmoves);
-
-            switch (checkmoves)
+            //Console.WriteLine(number);
+            //Console.WriteLine(checkmoves);
+            while (currentPosition != 100)
             {
-                case 1:
-                    int move = NoPlay(currentPosition);
-                    currentPosition = move;
-                    break;
-                case 2:
-                    int move1 = Ladder(currentPosition, number);
-                    currentPosition = move1;
-                    break;
-                case 3:
-                    int move2 = Snake(currentPosition, number);
-                    currentPosition = move2;
-                    break;
-                default:
-                    Console.WriteLine("No such option");
-                    break;
-            }
+                int number = Dice.Next(1, 7);
+                int checkmoves = Dice.Next(1, 4);
+                switch (checkmoves)
+                {
+                    case 1:
+                        int move = NoPlay(currentPosition);
+                        currentPosition = move;
+                        break;
+                    case 2:
+                        int move1 = Ladder(currentPosition, number);
+                        currentPosition = move1;
+                        break;
+                    case 3:
+                        int move2 = Snake(currentPosition, number);
+                        currentPosition = move2;
+                        break;
+                    default:
+                        Console.WriteLine("No such option");
+                        break;
+                }
 
-            Console.WriteLine("The Current Position of Player is: " + currentPosition);
+                Console.WriteLine("The Current Position of Player is: " + currentPosition);
+            }
             Console.ReadKey();
         }
     }
