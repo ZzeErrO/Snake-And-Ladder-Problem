@@ -42,12 +42,14 @@ namespace SnakeAndLadder
         {
             //variable
             int currentPosition = 0;
+            int timesDieRolled = 0;
             Console.WriteLine("The  Starting Position of Player is: " + START_POSITION );
             Random Dice = new Random();
             //Console.WriteLine(number);
             //Console.WriteLine(checkmoves);
             while (currentPosition != 100)
             {
+                timesDieRolled++;
                 int number = Dice.Next(1, 7);
                 int checkmoves = Dice.Next(1, 4);
                 switch (checkmoves)
@@ -71,6 +73,7 @@ namespace SnakeAndLadder
 
                 Console.WriteLine("The Current Position of Player is: " + currentPosition);
             }
+            Console.WriteLine("Number of times Die Rolled is " + timesDieRolled);
             Console.WriteLine("Player Wins");
             Console.ReadKey();
         }
