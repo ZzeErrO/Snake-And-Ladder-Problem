@@ -71,6 +71,7 @@ namespace SnakeAndLadder
 
                 Console.WriteLine("The Current Position of Player is: " + currentPosition);
             }
+            Console.WriteLine("Player Wins");
             Console.ReadKey();
         }
     }
